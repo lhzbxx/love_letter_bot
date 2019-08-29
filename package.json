@@ -1,0 +1,8 @@
+{
+  "name": "love_letter_bot",
+  "version": "1.0.0",
+  "description": "通过 Telegram Bot 玩《情书》。",
+  "repository": "git@github.com:lhzbxx/love_letter_bot.git",
+  "author": "lhzbxx <lhzbxx@gmail.com>",
+  "license": "GPL-3.0"
+}
