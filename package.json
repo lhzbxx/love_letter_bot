@@ -4,5 +4,19 @@
   "description": "通过 Telegram Bot 玩《情书》。",
   "repository": "git@github.com:lhzbxx/love_letter_bot.git",
   "author": "lhzbxx <lhzbxx@gmail.com>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "serve": "tsc && node ./dist/index.js"
+  },
+  "dependencies": {
+    "https-proxy-agent": "^2.2.2",
+    "telegraf": "^3.32.0",
+    "typescript": "^3.6.2"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.42",
+    "tslint": "^5.19.0",
+    "tslint-config-airbnb": "^5.11.1"
+  }
 }
