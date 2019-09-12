@@ -1,3 +1,3 @@
-import bot from './ui/bot';
+import { bootstrap } from './bot';
 
-bot.startPolling(2);
+bootstrap();
