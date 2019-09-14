@@ -10,6 +10,7 @@ branches:
     - master
 
 script:
+  - echo "$CONFIG" > src/config.json
   - docker build -t lhzbxx/love-letter-bot .
 
 after_success:

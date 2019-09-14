@@ -17,7 +17,7 @@ yarn
 # 开发环境下。
 yarn dev
 # 容器环境。
-docker run --name love-letter-bot -d lhzbxx/love-letter-bot
+docker pull lhzbxx/love-letter-bot && docker run --rm -it lhzbxx/love-letter-bot
 ```
 
 ### 设计

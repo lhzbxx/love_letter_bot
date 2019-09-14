@@ -1,5 +1,4 @@
 import { Player } from './player';
-import { ee } from '../mw/event-center';
 
 /**
  * 指定。
