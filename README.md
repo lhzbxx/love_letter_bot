@@ -1,6 +1,7 @@
 # Love Letter Bot
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](./LICENSE)
+[![Build Status](https://travis-ci.com/lhzbxx/love_letter_bot.svg?branch=master)](https://travis-ci.com/lhzbxx/love_letter_bot)
 
 通过 Telegram Bot 玩《[情书](<https://en.wikipedia.org/wiki/Love_Letter_(card_game)>)》，运行在 [@BG_LoveLetterBot](https://t.me/BG_LoveLetterBot)。
 
@@ -15,6 +16,8 @@
 yarn
 # 开发环境下。
 yarn dev
+# 容器环境。
+docker run --name love-letter-bot -d lhzbxx/love-letter-bot
 ```
 
 ### 设计
@@ -27,7 +30,7 @@ yarn dev
 ### ToDo
 
 1. <del>实现整个游戏流程。</del>
-2. 持续集成与部署。
+2. <del>持续集成与</del>部署。
 3. 记录战绩。
 4. 拓展 4-8 玩家的规则。
 5. 支持更多命令：

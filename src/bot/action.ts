@@ -16,16 +16,16 @@ const mw: Middleware<ContextMessageUpdate> = (
       `<b>该消息已失效！</b>
 发送 <code>/start</code> 开始游戏。`,
       Menu.none,
-    );
+    ).catch(() => {});
   }
 };
 
 bot.action('welcome', ({ editMessageText }) => {
-  editMessageText(welcome, Menu.welcome);
+  editMessageText(welcome, Menu.welcome).catch(() => {});
 });
 
 bot.action('about', ({ editMessageText }) => {
-  editMessageText(about, Menu.back);
+  editMessageText(about, Menu.back).catch(() => {});
 });
 
 bot.action(/^rule:/, ({ callbackQuery: { data }, editMessageText }) => {
@@ -38,7 +38,7 @@ bot.action(/^rule:/, ({ callbackQuery: { data }, editMessageText }) => {
 
 ${rule.content}`,
     Menu.rule(data),
-  );
+  ).catch(() => {});
 });
 
 bot.action(

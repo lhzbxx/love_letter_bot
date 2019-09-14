@@ -1,0 +1,17 @@
+language: bash
+
+services:
+  - docker
+
+sudo: required
+
+branches:
+  only:
+    - master
+
+script:
+  - docker build -t lhzbxx/love-letter-bot .
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push lhzbxx/love-letter-bot
