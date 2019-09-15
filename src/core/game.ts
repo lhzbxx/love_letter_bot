@@ -340,4 +340,12 @@ ${this.waitingPlayers.map((o) => o.description).join('、') || '-'}`;
     this.lastCard.selectedNumber = number;
     this.nextStage();
   }
+
+  /**
+   * 重置游戏，清空等待区。
+   */
+  reset() {
+    this.stage = 'open';
+    this.waitingPlayers = [];
+  }
 }
