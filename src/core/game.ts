@@ -65,6 +65,8 @@ export class Game {
         `输入 <code>@BG_LoveLetterBot</code> 出牌。
 其余玩家借此查看手牌。
 
+牌库中还有 ${this.deck.length} 张牌。
+
 接下来的出牌顺序为：${this.players
           .slice(1)
           .map((o) => o.description)

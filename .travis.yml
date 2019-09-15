@@ -11,8 +11,14 @@ branches:
 
 script:
   - echo "$CONFIG" > src/config.json
-  - docker build -t lhzbxx/love-letter-bot .
 
 after_success:
+  - docker build -t lhzbxx/love-letter-bot .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push lhzbxx/love-letter-bot
+
+deploy:
+  provider: heroku
+  api_key: '$HERO_API_KEY'
+  app: love-letter-bot
+  skip_cleanup: true

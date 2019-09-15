@@ -39,6 +39,7 @@
    ```markdown
    start - 开始游戏。
    ref - 查看提示卡。
+   reset - 重置游戏。
    ```
 
 5. 向 @BotFather 发送 /setinline 开启 inline 模式。

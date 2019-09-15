@@ -30,7 +30,7 @@ docker pull lhzbxx/love-letter-bot && docker run --rm -it lhzbxx/love-letter-bot
 ### ToDo
 
 1. <del>实现整个游戏流程。</del>
-2. <del>持续集成与</del>部署。
+2. <del>持续集成与部署。</del>
 3. 记录战绩。
 4. 拓展 4-8 玩家的规则。
 5. 支持更多命令：

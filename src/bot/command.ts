@@ -19,6 +19,18 @@ bot.help(({ reply }) => {
   reply(welcome, Menu.welcome);
 });
 
+bot.command(['reset', 'reset@BG_LoveLetterBot'], ({ from, chat, reply }) => {
+  if (chat.type === 'group') {
+    // 如果在群组里，则移除所有的玩家。
+    const game = gm.find(chat.id) || gm.create(from, chat.id);
+    game.players = [];
+    ee.emit('gameInfo', game);
+  } else {
+    // 如果不在群组里，则发送「帮助」信息。
+    reply(welcome, Menu.welcome);
+  }
+});
+
 bot.command(
   ['ref', 'ref@BG_LoveLetterBot'],
   ({ chat: { id }, replyWithPhoto }) => {
