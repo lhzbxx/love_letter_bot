@@ -5,7 +5,7 @@ import { Menu } from './menu';
 import { welcome } from './i18n';
 
 bot.command(['start', 'start@BG_LoveLetterBot'], ({ from, chat, reply }) => {
-  if (chat.type === 'group') {
+  if (chat.type.endsWith('group')) {
     // 如果在群组里，则创建游戏、显示当前的游戏信息和选项。
     const game = gm.create(from, chat.id);
     ee.emit('gameInfo', game);
@@ -20,7 +20,7 @@ bot.help(({ reply }) => {
 });
 
 bot.command(['reset', 'reset@BG_LoveLetterBot'], ({ from, chat, reply }) => {
-  if (chat.type === 'group') {
+  if (chat.type.endsWith('group')) {
     // 如果在群组里，则移除所有的玩家。
     const game = gm.find(chat.id) || gm.create(from, chat.id);
     game.reset();
