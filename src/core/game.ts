@@ -61,11 +61,11 @@ export class Game {
                 .join('、')}。\n\n`
             : '游戏开始，移除牌堆顶部的一张牌（不公开）。\n\n'
         }` +
-        `轮到 ${this.players[0].description} ` +
-        `输入 <code>@BG_LoveLetterBot</code> 出牌。
+        `轮到 ${this.players[0].at} ` +
+        `输入 <code>@BG_LoveLetterBot</code> 按空格出牌（不要发送）。
 其余玩家借此查看手牌。
 
-牌库中还有 ${this.deck.length} 张牌。
+牌库中还有 <b>${this.deck.length}</b> 张牌。
 
 接下来的出牌顺序为：${this.players
           .slice(1)

@@ -20,31 +20,43 @@ const mw: Middleware<ContextMessageUpdate> = (
   }
 };
 
-bot.action('welcome', ({ editMessageText }) => {
+bot.action('welcome', ({ answerCbQuery, editMessageText }) => {
+  answerCbQuery();
   editMessageText(welcome, Menu.welcome).catch(() => {});
 });
 
-bot.action('about', ({ editMessageText }) => {
+bot.action('about', ({ answerCbQuery, editMessageText }) => {
+  answerCbQuery();
   editMessageText(about, Menu.back).catch(() => {});
 });
 
-bot.action(/^rule:/, ({ callbackQuery: { data }, editMessageText }) => {
-  const rule = rules.find((o) => o.id === data);
-  if (!rule) {
-    return;
-  }
-  editMessageText(
-    `<b>${rule.title}</b>
+bot.action(
+  /^rule:/,
+  ({ answerCbQuery, callbackQuery: { data }, editMessageText }) => {
+    answerCbQuery();
+    const rule = rules.find((o) => o.id === data);
+    if (!rule) {
+      return;
+    }
+    editMessageText(
+      `<b>${rule.title}</b>
 
 ${rule.content}`,
-    Menu.rule(data),
-  ).catch(() => {});
-});
+      Menu.rule(data),
+    ).catch(() => {});
+  },
+);
 
 bot.action(
   'start',
   mw,
-  ({ callbackQuery: { message }, editMessageText, telegram }) => {
+  ({
+    answerCbQuery,
+    callbackQuery: { message },
+    editMessageText,
+    telegram,
+  }) => {
+    answerCbQuery();
     const game = gm.start(message.chat.id);
     if (game) {
       editMessageText('<b>游戏开始。</b>', Menu.none).catch(() => {});
@@ -56,13 +68,15 @@ bot.action(
 bot.action(
   'join',
   mw,
-  ({ callbackQuery: { message }, from, editMessageText }) => {
+  ({ answerCbQuery, callbackQuery: { message }, from, editMessageText }) => {
+    answerCbQuery();
     const game = gm.create(from, message.chat.id);
     editMessageText(game.info, Menu.game(game)).catch(() => {});
   },
 );
 
-bot.action('leave', ({ from, editMessageText }) => {
+bot.action('leave', ({ answerCbQuery, from, editMessageText }) => {
+  answerCbQuery();
   const game = gm.delete(from);
   if (game) {
     editMessageText(game.info, Menu.game(game)).catch(() => {});
@@ -72,7 +86,13 @@ bot.action('leave', ({ from, editMessageText }) => {
 bot.action(
   /^player:/,
   mw,
-  ({ callbackQuery: { message, data }, from, deleteMessage }) => {
+  ({
+    answerCbQuery,
+    callbackQuery: { message, data },
+    from,
+    deleteMessage,
+  }) => {
+    answerCbQuery();
     const game = gm.find(message.chat.id);
     if (game && game.isCurrent(from.id)) {
       game.selectPlayer(Number(data.substring(7)));
@@ -84,7 +104,13 @@ bot.action(
 bot.action(
   /^number:/,
   mw,
-  ({ callbackQuery: { message, data }, from, deleteMessage }) => {
+  ({
+    answerCbQuery,
+    callbackQuery: { message, data },
+    from,
+    deleteMessage,
+  }) => {
+    answerCbQuery();
     const game = gm.find(message.chat.id);
     if (game && game.isCurrent(from.id)) {
       const number = data.substring(7);

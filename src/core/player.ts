@@ -31,6 +31,11 @@ export class Player {
     return s;
   }
 
+  get at(): string {
+    const { first_name, id } = this.user;
+    return `<a href="tg://user?id=${id}">${first_name}</a>`;
+  }
+
   get username(): string {
     const { first_name, username } = this.user;
     return first_name + username ? ` @${username}` : '';
