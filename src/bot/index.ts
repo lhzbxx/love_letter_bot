@@ -16,5 +16,12 @@ import './inline-query';
 import './listener';
 
 export const bootstrap = () => {
-  bot.startPolling(2);
+  if (proxy) {
+    bot.startPolling(2);
+  } else {
+    bot.telegram.setWebhook(
+      `https://love-letter-bot.herokuapp.com/bot${token}`,
+    );
+    bot.startWebhook(`/bot${token}`, null, Number(process.env.PORT));
+  }
 };
