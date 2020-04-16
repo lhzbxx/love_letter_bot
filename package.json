@@ -10,7 +10,7 @@
     "serve": "tsc && node ./src/index.js"
   },
   "dependencies": {
-    "https-proxy-agent": "^2.2.2",
+    "https-proxy-agent": "^2.2.3",
     "strict-event-emitter-types": "^2.0.0",
     "telegraf": "^3.32.0",
     "typescript": "^3.6.2"
